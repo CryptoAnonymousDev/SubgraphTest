@@ -1,0 +1,6 @@
+type ExampleEntity @entity {
+  id: ID!
+  count: BigInt!
+  carId: BigInt! # uint256
+  brand: String! # string
+}

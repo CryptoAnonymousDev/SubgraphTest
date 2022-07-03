@@ -1,0 +1,47 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: TheGraphContract
+    network: rinkeby
+    source:
+      address: "0x53E4EeE0200190A77B8fE03e41c425BcAfef65ae"
+      abi: TheGraphContract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - CarCreated
+        - CarSold
+        - ClientAdded
+        - ClientAgeUpdated
+        - ClientDeleted
+        - ClientNameUpdated
+        - ClientSurnameUpdated
+        - FundsDeposited
+        - FundsWithdrawn
+      abis:
+        - name: TheGraphContract
+          file: ./abis/TheGraphContract.json
+      eventHandlers:
+        - event: CarCreated(uint256,string,string,uint256)
+          handler: handleCarCreated
+        - event: CarSold(uint256,uint256,uint256)
+          handler: handleCarSold
+        - event: ClientAdded(uint256,string,string,uint256)
+          handler: handleClientAdded
+        - event: ClientAgeUpdated(uint256,uint256)
+          handler: handleClientAgeUpdated
+        - event: ClientDeleted(uint256)
+          handler: handleClientDeleted
+        - event: ClientNameUpdated(uint256,string)
+          handler: handleClientNameUpdated
+        - event: ClientSurnameUpdated(uint256,string)
+          handler: handleClientSurnameUpdated
+        - event: FundsDeposited(uint256,uint256)
+          handler: handleFundsDeposited
+        - event: FundsWithdrawn(uint256,uint256)
+          handler: handleFundsWithdrawn
+      file: ./src/the-graph-contract.ts

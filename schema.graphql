@@ -4,3 +4,14 @@ type ExampleEntity @entity {
   carId: BigInt! # uint256
   brand: String! # string
 }
+
+type Client @entity {
+  id: Bytes!
+}
+
+type Car @entity {
+  id: Bytes!
+  brand: String!
+  model: String!
+  price: BigInt!
+}
